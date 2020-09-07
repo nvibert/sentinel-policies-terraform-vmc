@@ -7,14 +7,18 @@ import "tfplan-functions" as plan
 
 allowed_provider_type = ["ZEROCLOUD_1"]
 
+print(allowed_provider_type)
 # Get all SDDCs
 
 allSDDC = plan.find_resources("vmc_sddc")
 
+print(allSDDC)
 # Filter to SDDC with wrong providers
 # Warnings will be printed for all violations.
 
 wrongSDDCprovider = plan.filter_attribute_not_in_list(allSDDC, "provider_type", allowed_provider_type, true)
+
+print(wrongSDDCprovider)
 
 main = rule {
  length(wrongSDDCprovider["messages"]) is 0
