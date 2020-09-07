@@ -1,0 +1,7 @@
+# Rule to specify the allowed VMC locations. This is to enforce deployments within a specific region for data compliance reasons.
+
+import "tfconfig/v2" as tfconfig
+
+main = rule {
+  tfconfig.resources["vmc_sddc.sddc_1"].provider_type is "ZEROCLOUD"
+}
