@@ -1,7 +1,24 @@
-# Rule to specify the allowed VMC locations. This is to enforce deployments within a specific region for data compliance reasons.
+# Rule to specify the allowed VMC providers. This is to enforce deployments only to the supported provider.
 
-import "tfconfig/v2" as tfconfig
+import "tfplan/v2" as tfplan
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+
+import "tfplan-functions" as plan
+
+allowed_provider_type = ["ZEROCLOUD"]
+
+# Get all SDDCs
+
+allSDDC = plan.find_resources("vmc_sddc")
+
+# Filter to SDDC with wrong providers
+# Warnings will be printed for all violations.
+
+wrongSDDCprovider = plan.filter_attribute_not_in_list(allSDDC, "provider_type", allowed_provider_type, true)
 
 main = rule {
-  tfconfig.resources["vmc_sddc.sddc_1"].provider_type is "ZEROCLOUD"
+ length(wrongSDDCprovider["messages"]) is 0
 }
+
