@@ -5,7 +5,7 @@
 
 import "tfplan-functions" as plan
 
-allowed_provider_type = ["ZEROCLOUD_1"]
+allowed_provider_type = ["ZEROCLOUD"]
 
 print(allowed_provider_type)
 # Get all SDDCs
