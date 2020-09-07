@@ -1,7 +1,5 @@
 # Rule to specify the allowed VMC providers. This is to enforce deployments only to the supported provider.
 
-import "tfplan/v2" as tfplan
-
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
 
