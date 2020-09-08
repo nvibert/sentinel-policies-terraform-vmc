@@ -1,4 +1,4 @@
-# Rule to specify the allowed VMC providers. This is to enforce deployments only to the supported provider.
+# Rule to specify the allowed regions in which the user can deploy a VMC SDDC. This is to enforce deployments only to the allowed regions for compliance reasons.
 
 # Import common-functions/tfplan-functions/tfplan-functions.sentinel
 # with alias "plan"
