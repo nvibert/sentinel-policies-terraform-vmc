@@ -1,0 +1,26 @@
+# Rule to specify the allowed VMC providers. This is to enforce deployments only to the supported provider.
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+
+import "tfplan-functions" as plan
+
+allowed_regions = ["EU_NORTH_1","EU_WEST_2"]
+
+print(allowed_provider_type)
+# Get all SDDCs
+
+allSDDC = plan.find_resources("vmc_sddc")
+
+print(allSDDC)
+# Filter to SDDC with wrong regions
+# Warnings will be printed for all violations.
+
+wrongSDDCregions = plan.filter_attribute_not_in_list(allSDDC, "sddc_region", allowed_regions, true)
+
+print(wrongSDDCregions)
+
+main = rule {
+ length(wrongSDDCregions["messages"]) is 0
+}
+
