@@ -7,7 +7,7 @@ import "tfplan-functions" as plan
 
 allowed_regions = ["EU_NORTH_1","EU_WEST_2"]
 
-print(allowed_provider_type)
+print(allowed_regions)
 # Get all SDDCs
 
 allSDDC = plan.find_resources("vmc_sddc")
