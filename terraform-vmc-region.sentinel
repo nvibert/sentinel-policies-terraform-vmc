@@ -5,10 +5,7 @@
 
 import "tfplan-functions" as plan
 
-allowed_regions = [
-	"EU_NORTH_1",
-	"EU_WEST_2"
-]
+allowed_regions = ["EU_NORTH_1","EU_WEST_2"]
 
 print(allowed_regions)
 # Get all SDDCs
